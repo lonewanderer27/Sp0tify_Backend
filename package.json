@@ -1,0 +1,5 @@
+{
+	"devDependencies": {
+		"black": "^0.3.0"
+	}
+}

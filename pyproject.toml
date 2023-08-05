@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "sp0tify-backend"
+version = "0.1.0"
+description = ""
+authors = ["lonewanderer27 <adrianejames27@gmail.com>"]
+readme = "README.md"
+packages = [{include = "sp0tify_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+youtube-dl = "^2021.12.17"
+fastapi = "^0.101.0"
+lyricsgenius = "^3.0.1"
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
+python-dotenv = "^1.0.0"
+
+[tool.poetry.scripts]
+start = "uvicorn sp0tify_backend.main:sp0tify --reload --host"
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.2"
+black = "^23.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
