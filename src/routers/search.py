@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends
-from genius import genius
+from ..genius import genius
 from pprint import pprint
 from .utils import verify_query
 

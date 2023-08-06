@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from genius import genius
+from ..genius import genius
 from .utils import verify_query
 
 router = APIRouter(prefix="/album")

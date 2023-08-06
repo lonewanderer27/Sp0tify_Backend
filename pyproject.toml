@@ -14,9 +14,6 @@ lyricsgenius = "^3.0.1"
 uvicorn = {extras = ["standard"], version = "^0.23.2"}
 python-dotenv = "^1.0.0"
 
-[tool.poetry.scripts]
-start = "uvicorn sp0tify_backend.main:sp0tify --reload --host"
-
 [tool.poetry.group.dev.dependencies]
 autopep8 = "^2.0.2"
 black = "^23.7.0"

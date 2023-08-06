@@ -1,6 +1,5 @@
 from fastapi import APIRouter
-from genius import genius
-
+from ..genius import genius
 router = APIRouter()
 
 

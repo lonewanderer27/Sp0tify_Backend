@@ -1,5 +1,5 @@
-from fastapi import FastAPI, Request, HTTPException
-from routers import search, song, album, lyrics, video, leaderboard
+from fastapi import FastAPI
+from .routers import search, song, album, lyrics, video, leaderboard
 
 sp0tify = FastAPI()
 

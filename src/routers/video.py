@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from .utils import verify_id
-from genius import genius
+from ..genius import genius
 
 router = APIRouter()
 
