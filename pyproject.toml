@@ -20,6 +20,7 @@ start = "uvicorn sp0tify_backend.main:sp0tify --reload --host"
 [tool.poetry.group.dev.dependencies]
 autopep8 = "^2.0.2"
 black = "^23.7.0"
+datamodel-code-generator = "^0.21.3"
 
 [build-system]
 requires = ["poetry-core"]
