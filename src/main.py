@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import charts, search, song, album, lyrics, video, artist
 import uvicorn
+import os
 
 sp0tify = FastAPI(title="Sp0tify API")
 
@@ -21,9 +22,11 @@ sp0tify.include_router(lyrics.router)
 sp0tify.include_router(video.router)
 sp0tify.include_router(charts.router)
 
+
 @sp0tify.get("/")
 async def root():
     return {"message": "Sp0tify API"}
 
 if __name__ == "__main__":
-    uvicorn.run(sp0tify, host="0.0.0.0", port=8000)
+    uvicorn.run(sp0tify, host="0.0.0.0", port=int(
+        os.environ.get("PORT", 8000)))
