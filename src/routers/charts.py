@@ -12,7 +12,7 @@ async def get_charts(
         chart_genre: Literal['all', 'rap', 'pop', 'rb', 'rock', 'country'] = Query(
             'all', description="The genre of the results."),
         per_page: Annotated[Union[int, None], Query(
-        description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
+            description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
         page: Annotated[Union[int, None], Query(
             description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None,
         type_: Literal['songs', 'albums', 'artists'] = Query(

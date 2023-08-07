@@ -11,7 +11,7 @@ router = APIRouter(
 @router.get("/", description="Searches Genius.")
 async def search(
     q=Query(description="A term to search"),
-    per_page: Annotated[int | None, Query(
+    per_page: Annotated[Union[int, None], Query(
         description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
     page: Union[int, None] = Query(
         None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
@@ -24,8 +24,8 @@ async def search(
 @router.get("/all", description="Searches all types. Including: albums, articles, lyrics, songs, users and videos.")
 async def search_all(
     q=Query(description="A term to search"),
-    per_page: Union[int, None] = Query(None,
-                                       description="Number of results to return per page. It can’t be more than 5 for this method.", le=50, ge=0),
+    per_page: Annotated[Union[int, None], Query(
+        description="Number of results to return per page. It can’t be more than 5 for this method.", le=50, ge=0)] = None,
     page: Union[int, None] = Query(
         None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
 ):
@@ -49,11 +49,10 @@ async def search_albums(
     return res
 
 
-
 @router.get("/artists", description="Searches the artists on Genius.")
 async def search_artists(
     q=Query(description="A term to search"),
-    per_page: Annotated[int | None, Query(
+    per_page: Annotated[Union[int, None], Query(
         description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
     page: Union[int, None] = Query(
         None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
@@ -67,8 +66,8 @@ async def search_artists(
 @router.get("/songs")
 async def search_songs(
     q=Query(description="A term to search"),
-    per_page: Annotated[int | None, Query(
-        description="Number of results to return per page. It can’t be more than 5 for this method.", le=5, ge=0)] = None,
+    per_page: Annotated[Union[int, None], Query(
+        description="Number of results to return per page. It can’t be more than 5 for this method.", le=50, ge=0)] = None,
     page: Union[int, None] = Query(
         None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
 ):
