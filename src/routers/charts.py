@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query
-from typing import Union, Literal
+from typing import Union, Literal, Annotated
 from ..genius import genius
 
 router = APIRouter()
@@ -11,9 +11,9 @@ async def get_charts(
             'day', description="Time period of the results"),
         chart_genre: Literal['all', 'rap', 'pop', 'rb', 'rock', 'country'] = Query(
             'all', description="The genre of the results."),
-        per_page: Union[str, None] = Query(None,
-                                           description="Number of results to return per page"),
-        page: Union[str, None] = Query(
+        per_page: Annotated[int | None, Query(
+        description="Number of results to return per page", le=50, ge=0)] = None,
+        page: Union[int, None] = Query(
             None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
         type_: Literal['songs', 'albums', 'artists'] = Query(
             'songs', description="Type of chart to get")
