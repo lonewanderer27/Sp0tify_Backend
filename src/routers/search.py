@@ -8,11 +8,11 @@ router = APIRouter(
     prefix="/search", dependencies=[Depends(verify_query)], tags=["Search"])
 
 
-@router.get("/")
+@router.get("/", description="Searches Genius.")
 async def search(
     q=Query(description="A term to search"),
     per_page: Annotated[int | None, Query(
-        description="Number of results to return per page", le=50, ge=0)] = None,
+        description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
     page: Union[int, None] = Query(
         None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
     type: Literal['song', 'lyric', 'artist', 'album', 'video', 'article', 'multi'] = Query(
@@ -21,11 +21,11 @@ async def search(
     return res
 
 
-@router.get("/all")
+@router.get("/all", description="Searches all types. Including: albums, articles, lyrics, songs, users and videos.")
 async def search_all(
     q=Query(description="A term to search"),
     per_page: Union[int, None] = Query(None,
-                                       description="Number of results to return per page", le=50, ge=0),
+                                       description="Number of results to return per page. It can’t be more than 5 for this method.", le=50, ge=0),
     page: Union[int, None] = Query(
         None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
 ):
@@ -35,11 +35,26 @@ async def search_all(
     return res
 
 
-@router.get("/artists")
+@router.get("/albums")
+async def search_albums(
+    q=Query(description="A term to search"),
+    per_page: Annotated[Union[int, None], Query(
+        description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
+    page: Annotated[Union[int, None], Query(
+        description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None
+):
+    res = genius.search_albums(q, per_page, page)
+
+    pprint(res, indent=2)
+    return res
+
+
+
+@router.get("/artists", description="Searches the artists on Genius.")
 async def search_artists(
     q=Query(description="A term to search"),
     per_page: Annotated[int | None, Query(
-        description="Number of results to return per page", le=50, ge=0)] = None,
+        description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
     page: Union[int, None] = Query(
         None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
 ):
@@ -53,7 +68,7 @@ async def search_artists(
 async def search_songs(
     q=Query(description="A term to search"),
     per_page: Annotated[int | None, Query(
-        description="Number of results to return per page", le=50, ge=0)] = None,
+        description="Number of results to return per page. It can’t be more than 5 for this method.", le=5, ge=0)] = None,
     page: Union[int, None] = Query(
         None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)"),
 ):
@@ -63,27 +78,13 @@ async def search_songs(
     return res
 
 
-@router.get("/albums")
-async def search_albums(
-    q=Query(description="A term to search"),
-    per_page: Annotated[Union[int, None], Query(
-        description="Number of results to return per page", le=50, ge=0)] = None,
-    page: Annotated[Union[int, None], Query(
-            description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None
-):
-    res = genius.search_albums(q, per_page, page)
-
-    pprint(res, indent=2)
-    return res
-
-
-@router.get("/lyrics")
+@router.get("/lyrics", description="Searches song using lyrics")
 async def search_lyrics(
     q=Query(description="A term to search"),
     per_page: Annotated[Union[int, None], Query(
-        description="Number of results to return per page", le=50, ge=0)] = None,
+        description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
     page: Annotated[Union[int, None], Query(
-            description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None
+        description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None
 ):
     res = genius.search_lyrics(q, per_page, page)
 
@@ -95,9 +96,9 @@ async def search_lyrics(
 async def search_web(
     q=Query(description="A term to search"),
     per_page: Annotated[Union[int, None], Query(
-        description="Number of results to return per page", le=50, ge=0)] = None,
+        description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
     page: Annotated[Union[int, None], Query(
-            description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None
+        description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None
 ):
     res = genius.search_videos(q, per_page, page)
 
