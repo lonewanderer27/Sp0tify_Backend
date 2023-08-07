@@ -34,7 +34,7 @@ To ensure secure and authorized access to the Sp0tify LG REST-API, users are req
    - Once the API client is created, you will be provided with a Genius client API key.
    - Store this Genius client API key as an environment variable named "NEXT_PUBLIC_GENIUS_ACCESS_TOKEN."
 
-By combining the Deta Space API Key for Deta Space authentication and the Genius client API key for Genius.com authorization, users can securely access the REST-API's functionalities and retrieve music-related data seamlessly.
+Combining the Deta Space API Key and the Genius client API key ensures that only the authorized user and those provided with the proper API keys can access the REST-API's functionalities and retrieve music-related data seamlessly.
 
 ## Data Formats and Accuracy
 
