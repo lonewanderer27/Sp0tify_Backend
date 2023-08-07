@@ -1,4 +1,5 @@
-from fastapi import HTTPException
+from fastapi import HTTPException, Query, Depends
+from typing import Optional, Annotated
 
 async def verify_query(q: str):
     if q == "" or q == None:

@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends
 from .utils import verify_id
 from ..genius import genius
 
-router = APIRouter()
+router = APIRouter(tags=["Video"])
 
 
 @router.get("/video", dependencies=[Depends(verify_id)])
-async def search_video(id):
+async def search_video(id: int):
     res = genius.video(id)
     return res
 
