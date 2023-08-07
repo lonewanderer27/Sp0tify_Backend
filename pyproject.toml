@@ -9,7 +9,7 @@ packages = [{include = "sp0tify_backend"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 youtube-dl = "^2021.12.17"
-fastapi = "^0.101.0"
+fastapi = "0.94.0"
 lyricsgenius = "^3.0.1"
 uvicorn = {extras = ["standard"], version = "^0.23.2"}
 python-dotenv = "^1.0.0"
