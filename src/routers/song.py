@@ -15,9 +15,10 @@ async def search_song(id: int):
 @router.get("/{id}/activity")
 async def activity_song(
     id: int,
-    per_page: Annotated[int | None, Query(
+    per_page: Annotated[Union[int, None], Query(
         description="Number of results to return per page", le=50, ge=0)] = None,
-    page: Union[int, None] = Query(
-        None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")):
+    page: Annotated[Union[int, None], Query(
+            description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None
+):
     res = genius.song_activity(id, per_page, page)
     return res

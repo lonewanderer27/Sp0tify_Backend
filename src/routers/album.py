@@ -22,9 +22,9 @@ async def album_cover_arts(id: int):
 @router.get("/{id}/tracks", description="Gets tracks of a specific album.")
 async def album_tracks(
     id: int,
-    per_page: Annotated[int | None, Query(
+    per_page: Annotated[Union[int, None], Query(
         description="Number of results to return per page", le=50, ge=0)] = None,
-    page: Union[int, None] = Query(
-        None, description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")):
+    page: Annotated[Union[int, None], Query(
+            description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None):
     res = genius.album_tracks(id, per_page, page)
     return res

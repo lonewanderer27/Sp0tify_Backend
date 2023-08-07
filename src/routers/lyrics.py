@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, Query
 from ..genius import genius
-from typing import Union
+from typing import Union, Annotated
 from .utils import verify_id
 from bs4 import BeautifulSoup as bs
 from requests import get
@@ -26,8 +26,8 @@ def clean_line(s: str):
 async def search_lyrics(
     id: Union[int, None] = Query(None, description="Genius song ID"),
     song_url: Union[str, None] = Query(None, description="Song URL"),
-    remove_section_headers: bool = Query(
-        False, description="Remove section headers (e.g. [Chorus])"),
+    remove_section_headers: Annotated[bool, Query(
+            description="Remove section headers (e.g. [Chorus])")] = False,
 ):
     res = genius.lyrics(id, song_url, remove_section_headers)
     if res:
