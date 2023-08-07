@@ -16,8 +16,8 @@ def check_app_key(x_space_app_key: str = Depends(X_SPACE_APP_KEY)):
         return True
 
 
-sp0tify = FastAPI(title="Sp0tify API",
-                  description="Sp0tify API is a free API that allows you to get information about songs, artists, albums, lyrics, videos, and charts.",
+sp0tify = FastAPI(title="Sp0tify LG",
+                  description="Sp0tify LG wraps LyricsGenius into a REST-API that allows you to get information about songs, artists, albums, lyrics, videos, and charts.",
                   version="1.0.0")
 
 sp0tify.add_middleware(

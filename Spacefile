@@ -1,7 +1,7 @@
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
-  - name: Sp0tify-Backend
+  - name: sp0tify-lg
     src: ./
     engine: python3.9
     primary: true
