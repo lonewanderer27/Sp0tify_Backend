@@ -6,7 +6,10 @@ from .routers import charts, search, song, album, lyrics, video, artist
 import uvicorn
 import os
 
-X_SPACE_APP_KEY = APIKeyHeader(name="X-Space-App-Key")
+X_SPACE_APP_KEY = APIKeyHeader(
+    name="X-Space-App-Key",
+    description="Deta Space App Key",
+)
 
 
 def check_app_key(x_space_app_key: str = Depends(X_SPACE_APP_KEY)):
