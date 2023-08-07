@@ -1,5 +1,5 @@
 {
-    "devCommand": "uvicorn src.main:sp0tify --host 0.0.0.0",
+    "devCommand": "uvicorn src.main:sp0tify --reload --port 8000",
     "builds": [
         {
             "src": "api/index.py",

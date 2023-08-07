@@ -40,7 +40,7 @@ sp0tify.include_router(video.router, dependencies=[Depends(check_app_key)])
 sp0tify.include_router(charts.router, dependencies=[Depends(check_app_key)])
 
 
-@sp0tify.get("/")
+@sp0tify.get("/", include_in_schema=False)
 async def root():
     return RedirectResponse(url="/docs")
 
