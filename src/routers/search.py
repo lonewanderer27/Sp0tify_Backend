@@ -78,7 +78,7 @@ async def search_songs(
     return res
 
 
-@router.get("/lyrics", description="Searches song using lyrics")
+@router.get("/lyrics", description="Searches songs using lyrics")
 async def search_lyrics(
     q=Query(description="A term to search"),
     per_page: Annotated[Union[int, None], Query(
@@ -92,7 +92,7 @@ async def search_lyrics(
     return res
 
 
-@router.get("/videos")
+@router.get("/videos", description="Searches videos on Genius.")
 async def search_web(
     q=Query(description="A term to search"),
     per_page: Annotated[Union[int, None], Query(
