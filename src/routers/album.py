@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query
 from ..genius import genius
 from .utils import verify_id
-from typing import Union, Annotated
+from typing import Union, Annotated, Literal
 
 router = APIRouter(
     prefix="/album", tags=["Album"], dependencies=[Depends(verify_id)])
@@ -23,7 +23,7 @@ async def album_cover_arts(id: int):
 async def album_tracks(
     id: int,
     per_page: Annotated[Union[int, None], Query(
-        description="Number of results to return per page", le=50, ge=0)] = None,
+        description="Number of results to return per page. It can’t be more than 50.", le=50, ge=0)] = None,
     page: Annotated[Union[int, None], Query(
             description="Paginated offset (e.g., per_page=5&page=3 returns songs 11-15)")] = None):
     res = genius.album_tracks(id, per_page, page)
