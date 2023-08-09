@@ -2,11 +2,12 @@ from fastapi import APIRouter, Depends, Query
 from ..genius import genius
 from .utils import verify_id
 from typing import Union, Annotated
+from src.models.song import Model
 
 router = APIRouter(prefix="/song", tags=["Song"], dependencies=[Depends(verify_id)])
 
 
-@router.get("/{id}", description="Gets data for a specific song.")
+@router.get("/{id}", description="Gets data for a specific song.", response_model=Model)
 async def search_song(id: int):
     res = genius.song(id)
     return res

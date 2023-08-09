@@ -10,78 +10,78 @@ from pydantic import BaseModel, Field
 
 
 class Range(BaseModel):
-    start: int
-    end: int
+    start: Optional[int] = None
+    end: Optional[int] = None
 
 
 class Highlight(BaseModel):
-    property: str
-    value: str
+    property: Optional[str] = None
+    value: Optional[str] = None
     snippet: bool
     ranges: List[Range]
 
 
 class ReleaseDateComponent(BaseModel):
-    year: int
-    month: int
-    day: int
+    year: Optional[int] = None
+    month: Optional[int] = None
+    day: Optional[int] = None
 
 
 class Stats(BaseModel):
-    unreviewed_annotations: int
+    unreviewed_annotations: Optional[int] = None
     concurrents: Optional[int] = None
     hot: bool
-    pageviews: int
+    pageviews: Optional[int] = None
 
 
 class PrimaryArtist(BaseModel):
-    field_type: str = Field(..., alias='_type')
-    api_path: str
-    header_image_url: str
-    id: int
-    image_url: str
-    index_character: str
+    field_type: Optional[str] = Field(None, alias='_type')
+    api_path: Optional[str] = None
+    header_image_url: Optional[str] = None
+    id: Optional[int] = None
+    image_url: Optional[str] = None
+    index_character: Optional[str] = None
     is_meme_verified: bool
     is_verified: bool
-    name: str
-    slug: str
-    url: str
+    name: Optional[str] = None
+    slug: Optional[str] = None
+    url: Optional[str] = None
     iq: Optional[int] = None
 
 
 class Artist(BaseModel):
-    field_type: str = Field(..., alias='_type')
-    api_path: str
-    header_image_url: str
-    id: int
-    image_url: str
-    index_character: str
+    field_type: Optional[str] = Field(None, alias='_type')
+    api_path: Optional[str] = None
+    header_image_url: Optional[str] = None
+    id: Optional[int] = None
+    image_url: Optional[str] = None
+    index_character: Optional[str] = None
     is_meme_verified: bool
     is_verified: bool
-    name: str
-    slug: str
-    url: str
+    name: Optional[str] = None
+    slug: Optional[str] = None
+    url: Optional[str] = None
     iq: Optional[int] = None
 
 
 class DfpKvItem(BaseModel):
-    name: str
+    name: Optional[str] = None
     values: List[str]
 
 
 class PosterAttributes(BaseModel):
-    height: int
-    width: int
+    height: Optional[int] = None
+    width: Optional[int] = None
 
 
 class ProviderParam(BaseModel):
-    name: str
-    value: str
+    name: Optional[str] = None
+    value: Optional[str] = None
 
 
 class VideoAttributes(BaseModel):
-    width: int
-    height: int
+    width: Optional[int] = None
+    height: Optional[int] = None
 
 
 class Interactions(BaseModel):
@@ -95,27 +95,27 @@ class CurrentUserMetadata(BaseModel):
 
 
 class BoundingBox(BaseModel):
-    width: int
-    height: int
+    width: Optional[int] = None
+    height: Optional[int] = None
 
 
 class Tiny(BaseModel):
-    url: str
+    url: Optional[str] = None
     bounding_box: BoundingBox
 
 
 class Thumb(BaseModel):
-    url: str
+    url: Optional[str] = None
     bounding_box: BoundingBox
 
 
 class Small(BaseModel):
-    url: str
+    url: Optional[str] = None
     bounding_box: BoundingBox
 
 
 class Medium(BaseModel):
-    url: str
+    url: Optional[str] = None
     bounding_box: BoundingBox
 
 
@@ -129,54 +129,54 @@ class Avatar(BaseModel):
 class CurrentUserMetadata1(BaseModel):
     permissions: List
     excluded_permissions: List[str]
-    interactions: Interactions
+    interactions: Optional[Interactions] = None
 
 
 class Author(BaseModel):
-    field_type: str = Field(..., alias='_type')
-    about_me_summary: str
-    api_path: str
+    field_type: Optional[str] = Field(None, alias='_type')
+    about_me_summary: Optional[str] = None
+    api_path: Optional[str] = None
     avatar: Avatar
-    header_image_url: str
-    human_readable_role_for_display: str
-    id: int
-    iq: int
+    header_image_url: Optional[str] = None
+    human_readable_role_for_display: Optional[str] = None
+    id: Optional[int] = None
+    iq: Optional[int] = None
     is_meme_verified: bool
     is_verified: bool
-    login: str
-    name: str
-    role_for_display: str
-    url: str
+    login: Optional[str] = None
+    name: Optional[str] = None
+    role_for_display: Optional[str] = None
+    url: Optional[str] = None
     current_user_metadata: CurrentUserMetadata1
 
 
 class Sponsorship(BaseModel):
-    field_type: str = Field(..., alias='_type')
-    api_path: str
+    field_type: Optional[str] = Field(None, alias='_type')
+    api_path: Optional[str] = None
     sponsor_image: Optional[str] = None
-    sponsor_image_style: str
+    sponsor_image_style: Optional[str] = None
     sponsor_link: Optional[str] = None
     sponsor_phrase: Optional[str] = None
     sponsored: bool
 
 
 class Tiny1(BaseModel):
-    url: str
+    url: Optional[str] = None
     bounding_box: BoundingBox
 
 
 class Thumb1(BaseModel):
-    url: str
+    url: Optional[str] = None
     bounding_box: BoundingBox
 
 
 class Small1(BaseModel):
-    url: str
+    url: Optional[str] = None
     bounding_box: BoundingBox
 
 
 class Medium1(BaseModel):
-    url: str
+    url: Optional[str] = None
     bounding_box: BoundingBox
 
 
@@ -188,14 +188,14 @@ class Avatar1(BaseModel):
 
 
 class Result(BaseModel):
-    field_type: str = Field(..., alias='_type')
+    field_type: Optional[str] = Field(None, alias='_type')
     annotation_count: Optional[int] = None
-    api_path: str
+    api_path: Optional[str] = None
     artist_names: Optional[str] = None
     full_title: Optional[str] = None
     header_image_thumbnail_url: Optional[str] = None
     header_image_url: Optional[str] = None
-    id: int
+    id: Optional[int] = None
     instrumental: Optional[bool] = None
     lyrics_owner_id: Optional[int] = None
     lyrics_state: Optional[str] = None
@@ -212,7 +212,7 @@ class Result(BaseModel):
     title: Optional[str] = None
     title_with_featured: Optional[str] = None
     updated_by_human_at: Optional[int] = None
-    url: str
+    url: Optional[str] = None
     featured_artists: Optional[List] = None
     primary_artist: Optional[PrimaryArtist] = None
     image_url: Optional[str] = None
@@ -267,13 +267,13 @@ class Result(BaseModel):
 
 class Hit(BaseModel):
     highlights: List[Highlight]
-    index: str
-    type: str
+    index: Optional[str] = None
+    type: Optional[str] = None
     result: Result
 
 
 class Section(BaseModel):
-    type: str
+    type: Optional[str] = None
     hits: List[Hit]
 
 
