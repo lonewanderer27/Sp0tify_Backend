@@ -256,6 +256,7 @@ class Song1(BaseModel):
     id: Optional[int] = None
     lyrics_owner_id: Optional[int] = None
     lyrics_state: Optional[str] = None
+    lyrics_marked_complete_by: Optional[User] = None
     path: Optional[str] = None
     pyongs_count: Optional[int]
     relationships_index_url: Optional[str] = None
@@ -383,7 +384,7 @@ class Song(BaseModel):
     custom_performances: List[CustomPerformance]
     description_annotation: DescriptionAnnotation
     featured_artists: List
-    lyrics_marked_complete_by: None
+    lyrics_marked_complete_by: Optional[User] = None
     lyrics_marked_staff_approved_by: Optional[LyricsMarkedStaffApprovedBy] = None
     media: List[MediaItem]
     primary_artist: PrimaryArtist
