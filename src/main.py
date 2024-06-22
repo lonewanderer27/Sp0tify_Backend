@@ -1,15 +1,9 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security.api_key import APIKeyHeader
 from .routers import charts, search, song, album, lyrics, video, artist
 import uvicorn
 import os
-
-X_SPACE_APP_KEY = APIKeyHeader(
-    name="X-Space-App-Key",
-    description="Deta Space App Key",
-)
 
 
 sp0tify = FastAPI(title="Sp0tify LG",
