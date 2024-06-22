@@ -12,13 +12,6 @@ X_SPACE_APP_KEY = APIKeyHeader(
 )
 
 
-def check_app_key(x_space_app_key: str = Depends(X_SPACE_APP_KEY)):
-    if x_space_app_key == "" or x_space_app_key == None:
-        return False
-    else:
-        return True
-
-
 sp0tify = FastAPI(title="Sp0tify LG",
                   description="Sp0tify LG wraps LyricsGenius into a REST-API that allows you to get information about songs, artists, albums, lyrics, videos, and charts.",
                   version="1.0.0")
@@ -31,13 +24,13 @@ sp0tify.add_middleware(
     allow_headers=["*"]
 )
 
-sp0tify.include_router(search.router, dependencies=[Depends(check_app_key)])
-sp0tify.include_router(song.router, dependencies=[Depends(check_app_key)])
-sp0tify.include_router(artist.router, dependencies=[Depends(check_app_key)])
-sp0tify.include_router(album.router, dependencies=[Depends(check_app_key)])
-sp0tify.include_router(lyrics.router, dependencies=[Depends(check_app_key)])
-sp0tify.include_router(video.router, dependencies=[Depends(check_app_key)])
-sp0tify.include_router(charts.router, dependencies=[Depends(check_app_key)])
+sp0tify.include_router(search.router)
+sp0tify.include_router(song.router)
+sp0tify.include_router(artist.router)
+sp0tify.include_router(album.router)
+sp0tify.include_router(lyrics.router)
+sp0tify.include_router(video.router)
+sp0tify.include_router(charts.router)
 
 
 @sp0tify.get("/", include_in_schema=False)
