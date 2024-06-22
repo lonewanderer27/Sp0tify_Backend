@@ -1,4 +1,5 @@
 {
+    "version": 2,
     "devCommand": "uvicorn src.main:sp0tify --reload --port 8000",
     "builds": [
         {
