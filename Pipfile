@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+youtube-dl = "==2021.12.17"
+beautifulsoup4 = "==4.12.2"
+lyricsgenius = "==3.0.1"
+pytube = "==15.0.0"
+uvicorn = {extras = ["standard"], version = "==0.23.2"}
+fastapi = "==0.94.0"
+python-dotenv = "==1.0.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
