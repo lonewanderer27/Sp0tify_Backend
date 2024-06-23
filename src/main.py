@@ -29,7 +29,7 @@ sp0tify.include_router(charts.router)
 
 @sp0tify.get("/", include_in_schema=False)
 async def root():
-    return RedirectResponse(url="/docs")
+    return "Welcome to Sp0tify LG! Please visit the documentation at /docs or /redoc."
 
 if __name__ == "__main__":
     uvicorn.run(sp0tify, host="0.0.0.0", port=int(
