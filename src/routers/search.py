@@ -67,7 +67,7 @@ async def search_artists(
     return res
 
 
-@router.get("/songs", response_model=Search)
+@router.get("/songs", response_model=Section)
 async def search_songs(
     q=Query(description="A term to search"),
     per_page: Annotated[Union[int, None], Query(
